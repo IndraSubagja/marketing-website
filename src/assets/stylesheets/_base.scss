@@ -105,7 +105,7 @@ body {
 
 body {
   font-family: $font-default;
-  color: $color-blue-magenta;
+  color: $primary-color;
   display: flex;
   flex-direction: column;
 }
@@ -118,7 +118,7 @@ ol {
 
 a {
   text-decoration: none;
-  color: $color-blue-magenta;
+  color: $primary-color;
 }
 
 img {
@@ -133,8 +133,9 @@ img {
 /* Typography */
 h1,
 h2,
-h3 {
-  font-weight: 500;
+h3,
+h4 {
+  font-weight: bold;
 }
 
 h1 {
@@ -166,4 +167,22 @@ small {
 .header {
   margin-top: 6.4rem;
   text-align: center;
+}
+
+@media (max-width: 991px) {
+  h1 {
+    font-size: 5.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 4.8rem;
+  }
+}
+
+@media (max-width: 575px) {
+  h1 {
+    font-size: 4.4rem;
+  }
 }

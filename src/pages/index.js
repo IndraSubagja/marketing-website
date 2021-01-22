@@ -3,37 +3,44 @@ import { graphql, Link } from 'gatsby';
 import { Helmet } from 'react-helmet';
 
 import { tsImageUrl } from 'lib/takeshape';
-import { friendlyDate } from 'lib/datetime';
-import routes from 'lib/routes';
 
 import Layout from 'components/Layout';
 import Trapdoor from 'components/Trapdoor';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { config } from '@fortawesome/fontawesome-svg-core';
+const Icon = require('@fortawesome/free-solid-svg-icons');
+
+config.autoAddCss = false;
 
 const IndexPage = ({ data = {} }) => {
   const page = data?.takeshape?.getHomepage || {};
   const { trapdoor } = page;
 
   const heroStyles = {
-    backgroundImage: `url('${ tsImageUrl(page.hero.image) }')`
-  }
+    backgroundImage: `url('${tsImageUrl(page.hero.image)}')`,
+  };
   const heroLinkIsExternal = page.hero.button.url.charAt(0) === '/';
 
   return (
     <Layout pageName="home">
       <Helmet>
-        <title>{ page.title }</title>
+        <title>{page.title}</title>
       </Helmet>
 
       <div className="hero hero--text" style={heroStyles}>
         <div className="container">
           <div className="hero__content">
-            <h1>{ page.hero.heading }</h1>
-            <p>{ page.hero.text }</p>
+            <h1>{page.hero.heading}</h1>
             {heroLinkIsExternal && (
-              <Link to={ page.hero.button.url } className="button">{ page.hero.button.text }</Link>
+              <Link to={page.hero.button.url} className="button">
+                {page.hero.button.text}
+              </Link>
             )}
             {!heroLinkIsExternal && (
-              <a href={ page.hero.button.url } className="button">{ page.hero.button.text }</a>
+              <a href={page.hero.button.url} className="button">
+                {page.hero.button.text}
+              </a>
             )}
           </div>
         </div>
@@ -42,12 +49,12 @@ const IndexPage = ({ data = {} }) => {
       <div className="content-block">
         <div className="container">
           <div>
-            <h2>{ page.introduction.heading }</h2>
-            <p>{ page.introduction.text }</p>
+            <h2>{page.introduction.heading}</h2>
+            <p>{page.introduction.text}</p>
           </div>
 
           <div>
-            <img src={ tsImageUrl(page.introduction.image)  } alt="intro" />
+            <img src={tsImageUrl(page.introduction.image)} alt="intro" />
           </div>
         </div>
       </div>
@@ -55,11 +62,11 @@ const IndexPage = ({ data = {} }) => {
       <div className="stat-bar">
         <div className="container">
           <ul>
-            { page.statBar.map((stat, i) => {
+            {page.statBar.map((stat, i) => {
               return (
                 <li key={`StatBar-${i}`}>
-                  <h1>{ stat.value }</h1>
-                  <p>{ stat.label }</p>
+                  <h1>{stat.value}</h1>
+                  <p>{stat.label}</p>
                 </li>
               );
             })}
@@ -69,37 +76,36 @@ const IndexPage = ({ data = {} }) => {
 
       <div className="thumb-list thumb-list--three">
         <div className="container">
-          <h2 className="heading">Featured Posts</h2>
+          <h2 style={{ textAlign: 'center' }}>Features</h2>
 
-          <ul>
-            { page.featuredPosts.map((post, i) => {
-              return (
-                <li key={`FeaturedPosts-${i}`}>
-                  <Link to={ routes.post(post.title) } className="tout">
-                    <div>
-                      <img src={ tsImageUrl(post.featureImage) } alt="" />
+          <div className="feature">
+            <ul>
+              {page.feature.map((feature, i) => {
+                const text = feature.bodyHtml.match(/<p>(.*?\.)/)[1];
+                return (
+                  <li key={`Feature-${i}`}>
+                    <div className="feature-item">
+                      <div>
+                        <FontAwesomeIcon icon={Icon[feature.icon]} size="6x" />
+                      </div>
+                      <div>
+                        <h4>{feature.title}</h4>
+                        <p>{text}</p>
+                      </div>
                     </div>
+                  </li>
+                );
+              })}
+            </ul>
 
-                    <div className="tout__content">
-                      <h4>{ post.title }</h4>
-                      <p>
-                        <time dateTime={post._enabledAt}>{ friendlyDate(post._enabledAt) }</time>
-                      </p>
-                    </div>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-
-          <div className="button-container">
-            <Link to="/blog" className="button">View all posts</Link>
+            <Link to="/feature" className="button button--dark">
+              More Details
+            </Link>
           </div>
         </div>
       </div>
 
       <Trapdoor {...trapdoor} />
-
     </Layout>
   );
 };
@@ -116,7 +122,6 @@ export const pageQuery = graphql`
             path
           }
           heading
-          text
           button {
             text
             url
@@ -133,22 +138,27 @@ export const pageQuery = graphql`
           value
           label
         }
-        featuredPosts {
+        feature {
           title
-          featureImage {
-            path
-          }
-          author {
-            name
-          }
+          icon
+          bodyHtml
           _enabledAt
         }
         trapdoor {
           heading
-          text
-          button {
+          contact {
+            button {
+              text
+              url
+            }
             text
-            url
+          }
+          signup {
+            button {
+              text
+              url
+            }
+            text
           }
         }
       }

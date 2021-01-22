@@ -1,15 +1,56 @@
 /* Trapdoor */
 .trapdoor {
-  background-color: $color-blue-magenta;
+  background-color: $primary-color;
   color: #fff;
-  padding: 6.4rem 0;
+  padding: 4.5rem 0;
   text-align: center;
+
+  .trapdoor-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+      padding: 0 50px;
+    }
+
+    div:first-child {
+      border-right: 1px solid #fff;
+    }
+  }
 }
 
 .trapdoor h1 {
-  margin-bottom: 3.2rem;
+  margin-bottom: 2.2rem;
 }
 
 .trapdoor .button {
   margin-top: 3.2rem;
+}
+
+@media screen and (max-width: 575px) {
+  .trapdoor .trapdoor-items {
+    flex-direction: column;
+
+    div {
+      padding: 30px 20px;
+    }
+
+    div:first-child {
+      border-right: none;
+      border-bottom: 1px solid #fff
+    }
+  }
+
+  .trapdoor h1 {
+    margin-bottom: 0;
+  }
+
+  .trapdoor p {
+    max-width: 300px;
+  }
+
+  .trapdoor .button {
+    margin-top: 2rem;
+  }
 }

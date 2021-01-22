@@ -1,0 +1,32 @@
+/* Feature List */
+.feature-list {
+  margin: 6rem 0;
+
+  .feature__content {
+
+    p,
+    ol {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      list-style: decimal;
+      margin-top: 0.5rem;
+      text-align: justify;
+    }
+
+    p::first-letter,
+    li {
+      margin-top: 0;
+      margin-left: 16px;
+    }
+  }
+}
+
+.feature-list li+li {
+  margin-top: 6rem;
+}
+
+@media screen and (max-width:767px) {
+  .feature-list {
+    margin: 4rem 0;
+  }
+}

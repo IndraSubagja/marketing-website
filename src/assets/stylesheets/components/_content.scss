@@ -62,7 +62,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border: 1px solid $color-blue-magenta;
+  border: 1px solid $primary-color;
   background-color: #fff;
   z-index: -1;
 }
@@ -71,7 +71,7 @@
   left: 1rem;
   top: 1rem;
   z-index: -2;
-  background-color: #e4f8ee;
+  background-color: $secondary-color;
 }
 
 .content .pullquote blockquote {
@@ -116,5 +116,5 @@
 .content hr {
   border: none;
   height: 1px;
-  background-color: $color-blue-magenta;
+  background-color: $primary-color;
 }

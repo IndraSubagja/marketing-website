@@ -1,11 +1,11 @@
-const slugify = require("slugify");
+const slugify = require('slugify');
 
 /**
- * post
- * @description Given the title, creates a post path
+ * feature
+ * @description Given the title, creates a feature path
  */
 
-exports.post = function(title) {
+exports.feature = function (title) {
   const slug = slugify(title.toLowerCase());
-  return `/blog/${slug}/`;
+  return `/feature/${slug}/`;
 };

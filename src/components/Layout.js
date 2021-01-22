@@ -8,31 +8,30 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 
 const Layout = ({ children, pageName }) => {
-
   let className = '';
 
-  if ( pageName ) {
+  if (pageName) {
     className = `${className} page-${pageName}`;
   }
+  console.log(className);
 
   return (
     <>
-      <Helmet bodyAttributes={{ class: className}}>
+      <Helmet bodyAttributes={{ class: className }}>
         <title>Gatsby Site</title>
-        <link rel="author" href="/humans.txt"/>
+        <link rel="author" href="/humans.txt" />
       </Helmet>
       <div className="wrapper">
         <Header />
-        <main className="main">{ children }</main>
+        <main className="main">{children}</main>
         <Footer />
       </div>
     </>
   );
-
 };
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
 export default Layout;

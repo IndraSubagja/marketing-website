@@ -1,18 +1,19 @@
-require("dotenv").config();
+require('dotenv').config();
 
 const metadata = {
-  companyName: 'Shape Startup',
+  companyName: 'Musins',
   companyUrl: 'https://www.takeshape.io/',
-  authorName: 'TakeShape, Inc.',
+  authorName: 'Musins, Inc.',
   authorUrl: 'https://www.takeshape.io/',
-  siteUrl: 'https://gatsby-starter-takeshape-startup.netlify.com'
-}
+  siteUrl: 'https://gatsby-starter-takeshape-startup.netlify.com',
+};
 
 module.exports = {
   siteMetadata: metadata,
   plugins: [
     'gatsby-plugin-resolve-src',
     'gatsby-plugin-sass',
+    'gatsby-plugin-fontawesome-css',
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-filesystem`,
@@ -29,9 +30,9 @@ module.exports = {
         url: `https://api.takeshape.io/project/${process.env.TAKESHAPE_PROJECT}/graphql`,
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.TAKESHAPE_API_KEY}`,
+          Authorization: `Bearer ${process.env.TAKESHAPE_API_KEY}`,
         },
-        fetchOptions: {}
+        fetchOptions: {},
       },
     },
     {
@@ -40,16 +41,16 @@ module.exports = {
         name: metadata.companyName,
         short_name: metadata.companyName,
         start_url: '/',
-        icon: './static/favicon.png'
+        icon: './static/favicon.png',
       },
     },
     {
       // This should be removed when going live
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        policy: [{ userAgent: '*', disallow: ['/'] }]
-      }
+        policy: [{ userAgent: '*', disallow: ['/'] }],
+      },
     },
-    'gatsby-plugin-sitemap'
+    'gatsby-plugin-sitemap',
   ],
-}
+};

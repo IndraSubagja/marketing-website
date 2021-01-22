@@ -1,25 +1,23 @@
 /* Thumb lists */
 .thumb-list {
-  margin: 8rem 0;
+  margin: 6rem 0;
 }
 
 .thumb-list--dark {
-  background-color: #e4f8ee;
+  background-color: $secondary-color;
   padding: 6.4rem 0;
   margin: 0
 }
 
 .thumb-list ul {
   display: flex;
-  flex-wrap: wrap;
   position: relative;
-  left: -1.6rem;
   margin-top: 3.2rem;
   width: calc(100% + 3.2rem);
 }
 
 .thumb-list li {
-  padding: 0 1.6rem;
+  padding: 0 1rem;
 }
 
 .thumb-list--two li {
@@ -40,4 +38,10 @@
 
 .thumb-list img {
   margin-bottom: 1.6rem;
+}
+
+@media screen and (max-width: 767px) {
+  .thumb-list ul {
+    flex-direction: column;
+  }
 }

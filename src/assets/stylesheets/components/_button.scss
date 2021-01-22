@@ -1,15 +1,27 @@
 /* Buttons */
 .button {
-  background-color: #e4f8ee;
-  padding: 2rem 3rem;
+  background-color: $secondary-color;
+  padding: 1.6rem 2.2rem;
   display: inline-block;
+  text-align: center;
   position: relative;
   font-size: 1.6rem;
   font-weight: 600;
   text-transform: uppercase;
+  min-width: 10.5em;
+  cursor: pointer;
+  color: #fff;
 }
 
 .button--dark {
-  background-color: $color-blue-magenta;
-  color: #fff;
+  background-color: #f1f1f1;
+  color: $primary-color;
+}
+
+.button:hover {
+  background-color: #ffc038;
+}
+
+.button--dark:hover {
+  background-color: #dddcdc;
 }

@@ -12,20 +12,20 @@ const AboutPage = ({ data = {} }) => {
   const trapdoor = data?.takeshape?.getTrapdoor || {};
 
   const heroStyles = {
-    backgroundImage: `url('${ tsImageUrl(page.hero.image) }')`
-  }
+    backgroundImage: `url('${tsImageUrl(page.hero.image)}')`,
+  };
 
   return (
     <Layout pageName="about">
       <Helmet>
-        <title>{ page.title }</title>
+        <title>{page.title}</title>
       </Helmet>
 
       <div className="hero hero--text" style={heroStyles}>
         <div className="container">
           <div className="hero__content">
-            <h1>{ page.hero.heading }</h1>
-            <p>{ page.hero.text }</p>
+            <h1>{page.hero.heading}</h1>
+            <p>{page.hero.text}</p>
           </div>
         </div>
       </div>
@@ -33,34 +33,37 @@ const AboutPage = ({ data = {} }) => {
       <div className="fact-bar">
         <div className="container">
           <ul>
-            { page.factBar.map((fact, i) => {
+            {page.factBar.map((fact, i) => {
               return (
                 <li key={`FactBar-${i}`}>
-                  <img src={ tsImageUrl(fact.image) } alt="" />
-                  <h4>{ fact.heading }</h4>
-                  <p>{ fact.text }</p>
+                  <img src={tsImageUrl(fact.image)} alt="" />
+                  <h4>{fact.heading}</h4>
+                  <p>{fact.text}</p>
                 </li>
-              )
+              );
             })}
           </ul>
         </div>
       </div>
 
       <div className="content">
-        <div className="container" dangerouslySetInnerHTML={{
-          __html: page.bodyHtml
-        }} />
+        <div
+          className="container"
+          dangerouslySetInnerHTML={{
+            __html: page.bodyHtml,
+          }}
+        />
       </div>
 
       <div className="team">
         <div className="container">
           <ul>
-            { page.team.map((member, i) => {
+            {page.team.map((member, i) => {
               return (
                 <li key={`Team-${i}`}>
-                  <img src={ tsImageUrl(member.image) } alt="" />
-                  <h4>{ member.name }</h4>
-                  <p>{ member.biography }</p>
+                  <img src={tsImageUrl(member.image)} alt="" />
+                  <h4>{member.name}</h4>
+                  <p>{member.biography}</p>
                 </li>
               );
             })}
@@ -71,9 +74,9 @@ const AboutPage = ({ data = {} }) => {
       <Trapdoor {...trapdoor} />
     </Layout>
   );
-;}
+};
 
-export default AboutPage
+export default AboutPage;
 
 export const pageQuery = graphql`
   query {
@@ -101,14 +104,6 @@ export const pageQuery = graphql`
           }
           name
           biography
-        }
-      }
-      getTrapdoor {
-        heading
-        text
-        button {
-          text
-          url
         }
       }
     }

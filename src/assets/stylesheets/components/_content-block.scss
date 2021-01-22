@@ -1,22 +1,40 @@
 /* Content Block */
 .content-block {
-  margin: 8rem 0;
+  margin: 6rem 0;
 }
 
 .content-block .container {
   display: flex;
   align-items: center;
+
+  p {
+    text-align: justify;
+  }
+
+  p::first-letter {
+    margin-left: 16px;
+  }
 }
 
-
-.content-block .container > * {
+.content-block .container>* {
   flex: 1 0 50%;
 }
 
-.content-block .container > * + * {
+.content-block .container>*+* {
   padding-left: 4rem;
 }
 
 .content-block h2 {
   margin-bottom: 2.4rem;
+}
+
+@media screen and (max-width: 767px) {
+  .content-block .container {
+    flex-direction: column;
+  }
+
+  .content-block .container>*+* {
+    padding: 0;
+    margin-top: 2rem;
+  }
 }

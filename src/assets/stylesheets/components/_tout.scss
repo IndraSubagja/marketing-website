@@ -3,16 +3,22 @@
   display: flex;
 }
 
-.tout > :first-child {
+.tout> :first-child {
   flex: 0 0 40%;
 }
 
-.tout > :last-child {
+.tout> :last-child {
   flex: 1 1 60%;
   padding-left: 4rem;
 }
 
-.tout > :last-child p:first-of-type {
-  margin: 0.5rem 0 2rem;
-  font-weight: 600;
+@media screen and (max-width: 767px) {
+  .tout {
+    flex-direction: column-reverse;
+  }
+
+  .tout> :last-child {
+    margin-bottom: 2rem;
+    padding: 0;
+  }
 }

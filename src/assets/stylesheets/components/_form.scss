@@ -1,10 +1,10 @@
 /* Form */
 form {
   max-width: 56rem;
-  margin: 8rem auto;
+  margin: 6rem auto;
 }
 
-form > * + * {
+form>*+* {
   margin-top: 2.4rem;
 }
 
@@ -13,13 +13,14 @@ textarea,
 button {
   appearance: none;
   border: 0 none;
+  font-family: $font-default;
 }
 
 input,
 textarea {
   background-color: #f1f1f1;
   width: 100%;
-  color: $color-blue-magenta;
+  color: $primary-color;
   font-size: 1.6rem;
 }
 
