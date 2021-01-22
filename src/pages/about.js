@@ -5,11 +5,9 @@ import { Helmet } from 'react-helmet';
 import { tsImageUrl } from 'lib/takeshape';
 
 import Layout from 'components/Layout';
-import Trapdoor from 'components/Trapdoor';
 
 const AboutPage = ({ data = {} }) => {
   const page = data?.takeshape?.getAbout || {};
-  const trapdoor = data?.takeshape?.getTrapdoor || {};
 
   const heroStyles = {
     backgroundImage: `url('${tsImageUrl(page.hero.image)}')`,
@@ -70,8 +68,6 @@ const AboutPage = ({ data = {} }) => {
           </ul>
         </div>
       </div>
-
-      <Trapdoor {...trapdoor} />
     </Layout>
   );
 };
